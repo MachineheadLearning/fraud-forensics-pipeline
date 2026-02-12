@@ -205,3 +205,18 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# --- Fraud Project Specifics ---
+# Ignore all data files (raw and processed)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Ignore trained model binaries
+models/*.pkl
+models/*.joblib
+
+# Ignore local environment files for Kaggle
+.kaggle/
+kaggle.json

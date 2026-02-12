@@ -1,0 +1,23 @@
+# --- Core Data Science & Persistence ---
+pandas==2.2.3
+numpy==1.26.4
+pyarrow==17.0.0
+joblib==1.4.2
+
+# --- Machine Learning & Imbalance ---
+scikit-learn==1.5.2
+xgboost==2.1.1
+imbalanced-learn==0.12.3
+
+# --- Visualization (Notebook & App) ---
+matplotlib==3.9.2
+seaborn==0.13.2
+plotly==5.24.1
+
+# --- Dashboard & Deployment ---
+streamlit==1.39.0
+
+# --- Utilities & API ---
+kaggle==1.6.17
+python-dotenv==1.0.1
+ipykernel==6.29.5
