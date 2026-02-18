@@ -169,10 +169,9 @@ def render_overview(stats: dict) -> None:
             ygap=2,
             showscale=True,
             colorbar=dict(
-                title="Fraud Rate",
+                title=dict(text="Fraud Rate", font=dict(color="#212121")),
                 tickformat=".1%",
-                tickfont=dict(color="#212121"),
-                titlefont=dict(color="#212121"),
+                tickfont=dict(color="#212121")
             ),
             hovertemplate="Category: %{y}<br>Age: %{x}<br>Fraud Rate: %{text}<extra></extra>",
         )
