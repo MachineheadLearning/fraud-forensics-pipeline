@@ -1,7 +1,7 @@
 """
-Fraud Forensics Pipeline — Investigative Dashboard
-====================================================
-Streamlit dashboard for fraud analysis.
+Fraud Detection Pipeline — Dashboard
+=====================================
+Streamlit dashboard for fraud analysis results.
 Loads only pre-computed data from dashboard_data/ — no model retraining at runtime.
 """
 
@@ -58,8 +58,8 @@ def load_results() -> pd.DataFrame:
 def render_overview(stats: dict) -> None:
     st.header("Operational Overview")
     st.caption(
-        "This view surfaces the macro indicators an investigator "
-        "reviews first: detection volume, temporal patterns, and category exposure."
+        "High-level detection metrics: model volume, temporal patterns, "
+        "and category-level fraud exposure."
     )
 
     kpi = stats["kpi"]
@@ -82,9 +82,9 @@ def render_overview(stats: dict) -> None:
     # --- Hourly fraud distribution ("Unsupervised Window") ---
     st.subheader("Unsupervised Window — Hourly Fraud Distribution")
     st.caption(
-        "Fraudsters exploit low-oversight hours. The spike between "
-        "22:00–03:00 reveals a temporal attack surface that maps directly to reduced "
-        "monitoring capacity."
+        "Fraud concentrates heavily in the 22:00–03:00 window, when "
+        "transaction volume drops but fraud rate spikes — a strong temporal signal "
+        "captured by the model's night window feature."
     )
 
     # --- Night fraud KPI ---
@@ -113,9 +113,9 @@ def render_overview(stats: dict) -> None:
     # --- High-risk categories ---
     st.subheader("High-Risk Categories")
     st.caption(
-        "Category-level concentration helps allocate investigative "
-        "resources. Online channels (Online Shopping, Grocery Online) dominate, "
-        "consistent with card-not-present fraud typologies."
+        "Category-level fraud concentration. Online channels "
+        "(Online Shopping, Grocery Online) dominate, consistent with "
+        "card-not-present fraud patterns."
     )
 
     cat_data = stats["charts"]["fraud_by_category"]
@@ -208,8 +208,8 @@ def render_overview(stats: dict) -> None:
 def render_auditor(df: pd.DataFrame) -> None:
     st.header("Transaction Auditor")
     st.caption(
-        "This is the investigator's primary workspace. Filters allow "
-        "triage by risk score and merchant category to prioritise case review."
+        "Filterable transaction-level view. Use the risk score and "
+        "category filters to explore model predictions and identify patterns."
     )
 
     # --- Filters ---
@@ -296,10 +296,10 @@ def render_auditor(df: pd.DataFrame) -> None:
     with st.expander("How to read the behavioural columns", expanded=True):
         st.markdown(
             """
-            | Indicator | What it measures | Investigative meaning |
+            | Indicator | What it measures | Interpretation |
             |---|---|---|
             | **Spike Factor** | Current transaction amount ÷ customer's rolling average | Values **> 2 σ** above baseline flag spending that deviates sharply from habit — the single strongest fraud signal in the model. |
-            | **Merchant Risk** | Historical fraud rate encoded per merchant | Merchants with elevated scores have disproportionate fraud histories; useful for merchant-level investigations. |
+            | **Merchant Risk** | Historical fraud rate encoded per merchant | Merchants with elevated scores have disproportionate fraud histories; useful for identifying high-risk merchants. |
             | **Category Risk** | Historical fraud rate encoded per category | Captures systemic category-level exposure (e.g. `Online Shopping`). |
             | **Night Window** | Binary flag for 22:00–03:00 transactions | Encodes the "Unsupervised Window" temporal attack surface. |
             | **Velocity Burst 24 h** | Transaction frequency anomaly in a 24-hour rolling window | Rapid successive transactions suggest automated or compromised-card usage. |
@@ -314,8 +314,8 @@ def render_auditor(df: pd.DataFrame) -> None:
 def render_explainability(stats: dict) -> None:
     st.header("Explainable AI (XAI)")
     st.caption(
-        "Model transparency is non-negotiable in investigative settings. "
-        "This section documents the modelling choices that an auditor would scrutinise."
+        "Model transparency and performance documentation. "
+        "This section covers the key modelling choices and their impact on results."
     )
 
     # --- Methodology cards ---
@@ -647,8 +647,8 @@ def render_sidebar() -> str:
             "https://img.icons8.com/fluency/96/detective.png",
             width=64,
         )
-        st.title("Risk Analytics Hub")
-        st.caption("Fraud Investigation Dashboard")
+        st.title("Fraud Detection Dashboard")
+        st.caption("Analytics & Model Performance")
 
         st.divider()
 
