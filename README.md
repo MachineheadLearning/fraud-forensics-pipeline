@@ -4,13 +4,19 @@
 
 Python · Pandas · XGBoost · SHAP · SMOTE · Streamlit · Plotly
 
-[▶ Live Demo](https://fraud-detection-dashboards.streamlit.app)
+## Interactive Dashboard
+
+Explore the full pipeline results — model performance, transaction-level investigation, SHAP explainability, and residual risk analysis — without installing anything. 
+
+**[→ Open the live dashboard](https://fraud-detection-dashboards.streamlit.app)**
+
+>Hosted on Streamlit Community Cloud
 
 ## Project Description
 
 This project implements a complete fraud detection pipeline — from raw transaction data through behavioral feature engineering, model training and evaluation, to an interactive investigator-facing dashboard. It uses the Sparkov-generated synthetic dataset (Kartik2112, cited in Amazon's Fraud Dataset Benchmark), and all findings are treated as methodological demonstrations rather than real-world fraud insights. What distinguishes this pipeline is its domain-aware approach: recall-focused evaluation with cost-sensitive framing, 15 behavioral features built under a strict zero-leakage protocol, SHAP-based explainability at global and per-transaction levels, operational threshold analysis, and a purpose-built 4-view Streamlit dashboard designed as an investigator's tool. This is a portfolio demonstration of the full end-to-end workflow — not just model metrics in a notebook, but a working system that connects analysis to actionable tooling.
 
-## Dashboard
+## Dashboard Preview
 
 | Overview | Transaction Auditor |
 |----------|-------------------|
@@ -43,18 +49,7 @@ The dashboard loads pre-computed predictions and metrics.
 
 > This is a synthetic dataset. All findings in this project are methodological demonstrations — they reflect how the pipeline handles fraud detection patterns, not real-world fraud behavior.
 
-## Getting Started
-
-### Dashboard Only (Quick Start)
-
-```bash
-git clone https://github.com/MachineheadLearning/fraud-forensics-pipeline.git
-cd fraud-forensics-pipeline
-pip install -r requirements.txt
-streamlit run app/dashboard.py
-```
-
-Pre-computed data in `dashboard_data/` means you can explore the full dashboard without downloading the dataset or training any models.
+## Local Setup & Reproduction
 
 ### Full Reproduction
 
