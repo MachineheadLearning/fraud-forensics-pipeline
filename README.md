@@ -4,8 +4,7 @@
 
 Python · Pandas · XGBoost · SHAP · SMOTE · Streamlit · Plotly
 
-<!-- TODO: Replace with actual Streamlit Community Cloud URL -->
-[▶ Live Demo](https://your-app.streamlit.app)
+[▶ Live Demo](https://fraud-detection-dashboards.streamlit.app)
 
 ## Project Description
 
@@ -21,7 +20,7 @@ This project implements a complete fraud detection pipeline — from raw transac
 |---------------------|-------------------|
 | ![Explainability](screenshots/explainability.png) | ![Risk Audit](screenshots/risk_audit.png) |
 
-The dashboard loads pre-computed predictions and metrics — no model training required to explore.
+The dashboard loads pre-computed predictions and metrics.
 
 ## Key Features
 
