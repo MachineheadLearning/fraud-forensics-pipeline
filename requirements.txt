@@ -15,4 +15,4 @@ seaborn
 plotly
 
 # Dashboard
-streamlit
+streamlit>=1.45.0
