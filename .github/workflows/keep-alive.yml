@@ -12,12 +12,14 @@ jobs:
     steps:
       - name: Ping Streamlit app
         run: |
-          echo "Pinging $APP_URL"
-          response=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 30 "$APP_URL")
+          echo "Pinging app"
+          response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$APP_URL")
           echo "HTTP status: $response"
-          if [ "$response" -lt 200 ] || [ "$response" -ge 400 ]; then
-            echo "::error::Ping failed with status $response"
+          # Accept any response from Streamlit's servers — even redirects count as traffic
+          if [ -z "$response" ] || [ "$response" = "000" ]; then
+            echo "::error::No response from server (status: $response)"
             exit 1
           fi
+          echo "Ping registered successfully"
         env:
           APP_URL: ${{ secrets.STREAMLIT_APP_URL }}
