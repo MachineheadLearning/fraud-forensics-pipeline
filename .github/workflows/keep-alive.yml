@@ -13,9 +13,9 @@ jobs:
       - name: Ping Streamlit app
         run: |
           echo "Pinging $APP_URL"
-          response=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$APP_URL")
+          response=$(curl -sL -o /dev/null -w "%{http_code}" --max-time 30 "$APP_URL")
           echo "HTTP status: $response"
-          if [ "$response" -ne 200 ]; then
+          if [ "$response" -lt 200 ] || [ "$response" -ge 400 ]; then
             echo "::error::Ping failed with status $response"
             exit 1
           fi
